@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
+#define MAX 5
 int main()
 {
     // cout << "输入一个文本";
@@ -28,11 +29,18 @@ int main()
     // cin >> str;
     // getline(cin, str);
     str2.append(str);
-   // int len1;
-    //cin >> len1;
-    //getline(std::cin, str);//这个可以只看到 \n
+    string str11[MAX];
+    cout << reinterpret_cast<unsigned long>(str11) << endl;
+    cout << str11  << endl;
+    // int len1;
+    // cin >> len1;
+    // getline(std::cin, str);//这个可以只看到 \n
     auto len = str2.length();
     string str3 = str.substr(1, 4);
     cout << len << " " << str3 << " " << endl;
+
+    
+
     return 0;
+
 }
