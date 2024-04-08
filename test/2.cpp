@@ -35,4 +35,5 @@ int main(){
     zhang3.number = 1;
     zhang3.print();
     return 0;
+    
 }

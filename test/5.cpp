@@ -28,11 +28,30 @@ public:
     }
 };
 
-void test01(){
+void test01()
+{
     Person p1(20);
     Person p2(p1);
 }
+void dowork(Person p)
+{
+}
+void test02()
+{
+    Person p;
+    dowork(p); // 实参传给形参时，会变成拷贝
+}
+Person test03()
+{
+    Person p;
+    p.age = 10;
+    cout << p.age << endl;
+    return p;
+}
 int main()
 {
-    test01();
+    // test03();
+    Person p1 = test03(); // 这里会发生拷贝 ? 在这里只发生默认构造
+    //这里没有发生构造?
+    cout << p1.age << endl;
 }
