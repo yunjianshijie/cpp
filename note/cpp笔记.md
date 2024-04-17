@@ -403,3 +403,184 @@ Person(string name,string phone ): m_name(name),m_phone(phone){
 
 ~~~
 
+#### 静态变量
+
+1. 所有对象都共享同一个数据
+2. 编译阶段就分配内存
+3. 类内声明，类外初始化操作
+~~~cpp
+
+class Person
+{
+public:
+    static int a;
+};
+
+void test01(){
+    Person p;
+    cout << p.a;
+}
+int main()
+{
+
+test01(); //如果不初始化静态变量会出错
+
+}
+~~~
+
+`必须初始化且不能初始化在与定义一起`
+
+~~~cpp
+
+void test01()
+{
+    int Person::a = 100; // 在定义和初始化之外 ，后面定义了所以编译 错误
+    Person p;
+
+    cout << Person::a << endl;
+}
+~~~
+
+> 静态变量不属于某一个对象 属于类
+
+1. 通过对象进行访问
+
+2. 通过类名进行访问
+
+~~~ cpp
+cout << Person:: a << endl;
+Person p;
+cout <<p.a << endl;
+~~~
+
+> 静态变量也有权限
+
+
+#### 静态函数
+
+1. 所有对象都共享同一个函数
+2. 静态函数只能访问静态成员
+
+
+### 对象模型 this指针
+
+#### 函数变量分开存储
+1. 空对象 ——>c++编译器也给空对象分配一个字节空间 ，是为了区分空对象占内存空位置
+2. 静态变量不属于对象上
+3. 函数也是不在
+
+#### this指针
+
+this指向被调用的成员函数所属的对象
+
+目的：
+1. 解决名称冲突
+2. 返回对象
+
+> 最好成员还是用m_name取名比较好
+
+1:
+~~~cpp
+class Person
+{
+public:
+    int age;
+    Person(int age){
+        this->age = age;//this指针指向
+        Person ::age = age;
+    }
+};
+~~~
+
+2:
+~~~cpp
+class Person
+{
+public:
+    int age;
+    Person Person_add(Person &p)
+    {
+        this->age += p.age;
+        return *this;
+    }
+};
+void test01()
+{
+    Person p(10);
+    Person p2(10);
+    cout << p.Person_add(p2).Person_add(p2).Person_add(p2).age; //这里是40
+    cout << p.age << endl; //值还是20
+}
+~~~
+
+#### 空指针调用成员函数
+允许空指针访问函数，但是如果函数有调用类中数据会报错 （段错误）
+
+~~~cpp
+class Person
+{
+public:
+    int age;
+    void show_name()
+    {
+     cout << "z" << endl;
+    }
+    void show_age()
+    {
+        if(this==NULL){
+            return;
+        }//需要这里一行判断
+     cout << "age= " << age << endl;
+    }
+};
+void test02()
+{
+    Person *p = NULL;
+    p->show_name();
+   // p->show_age();
+}
+~~~
+
+#### const修饰成员函数
+
+1. 常函数：加const
+
+2. 常函数内不可以修改成员属性
+3. 成员属性申明时加上关键词mutale后，在常函数中依旧可以修改
+
+常对象:
+1. 声明对象前加const
+2. 常对象只能调用常函数
+
+~~~cpp
+class Person
+{
+public:
+    mutable int m_age;
+    int m_b;
+    // this 是指针常量 指向不可以修改
+    //
+    void show_age() const
+    {
+        this->m_age = 100;
+}
+};
+void test01(){
+    Person p;
+    p.m_age=10;
+    p.show_age();
+    cout << p.m_age;
+}
+void test02(){
+    const Person p;
+    // p.m_age = 0; //不能该
+}
+~~~
+ 
+### 友元
+
+
+
+
+
+
