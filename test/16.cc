@@ -78,8 +78,7 @@ int main()
     // 将任务添加到线程池
     for (int i = 1; i <= 8; ++i)
     {
-        threadPool.enqueue([i]
-                           { taskFunction(i); });
+        threadPool.enqueue([i]{ taskFunction(i); });
     }
 
     // 等待所有任务完成

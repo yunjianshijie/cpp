@@ -11,15 +11,15 @@ int main() {
         cout << endl;
     };
     std::thread t(func);
-    // auto func1 = [](int k) {
-    //     for (int i = 0; i < k; ++i) {
-    //         cout << i << " ";
-    //     }
-    //     cout << endl;
-    // };
-    // std::thread tt(func1, 20);
-    // if (tt.joinable()) { // 检查线程可否被join
-    //     tt.join();
-    // }
+    auto func1 = [](int k) {
+        for (int i = 0; i < k; ++i) {
+            cout << i << " ";
+        }
+        cout << endl;
+    };
+    std::thread tt(func1, 20);
+    if (tt.joinable()) { // 检查线程可否被join
+        tt.join();
+    }
     return 0;
 }
