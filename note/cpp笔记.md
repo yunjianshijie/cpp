@@ -579,6 +579,16 @@ void test02(){
  
 ### 友元
 
+## lambda函数
+
+语法
+~~~ cpp
+[capture](parameters) -> return_type {
+    // 函数体
+}
+~~~
+
+
 
 
 
