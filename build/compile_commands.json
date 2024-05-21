@@ -1,0 +1,50 @@
+[
+{
+  "directory": "/home/yunjian/cpp/build",
+  "command": "/usr/bin/clang++ -DSPDLOG_COMPILED_LIB -I/home/yunjian/cpp/spdlog/include -g -std=c++11 -o CMakeFiles/spdlog.dir/src/spdlog.cpp.o -c /home/yunjian/cpp/spdlog/src/spdlog.cpp",
+  "file": "/home/yunjian/cpp/spdlog/src/spdlog.cpp",
+  "output": "CMakeFiles/spdlog.dir/src/spdlog.cpp.o"
+},
+{
+  "directory": "/home/yunjian/cpp/build",
+  "command": "/usr/bin/clang++ -DSPDLOG_COMPILED_LIB -I/home/yunjian/cpp/spdlog/include -g -std=c++11 -o CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o -c /home/yunjian/cpp/spdlog/src/stdout_sinks.cpp",
+  "file": "/home/yunjian/cpp/spdlog/src/stdout_sinks.cpp",
+  "output": "CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o"
+},
+{
+  "directory": "/home/yunjian/cpp/build",
+  "command": "/usr/bin/clang++ -DSPDLOG_COMPILED_LIB -I/home/yunjian/cpp/spdlog/include -g -std=c++11 -o CMakeFiles/spdlog.dir/src/color_sinks.cpp.o -c /home/yunjian/cpp/spdlog/src/color_sinks.cpp",
+  "file": "/home/yunjian/cpp/spdlog/src/color_sinks.cpp",
+  "output": "CMakeFiles/spdlog.dir/src/color_sinks.cpp.o"
+},
+{
+  "directory": "/home/yunjian/cpp/build",
+  "command": "/usr/bin/clang++ -DSPDLOG_COMPILED_LIB -I/home/yunjian/cpp/spdlog/include -g -std=c++11 -o CMakeFiles/spdlog.dir/src/file_sinks.cpp.o -c /home/yunjian/cpp/spdlog/src/file_sinks.cpp",
+  "file": "/home/yunjian/cpp/spdlog/src/file_sinks.cpp",
+  "output": "CMakeFiles/spdlog.dir/src/file_sinks.cpp.o"
+},
+{
+  "directory": "/home/yunjian/cpp/build",
+  "command": "/usr/bin/clang++ -DSPDLOG_COMPILED_LIB -I/home/yunjian/cpp/spdlog/include -g -std=c++11 -o CMakeFiles/spdlog.dir/src/async.cpp.o -c /home/yunjian/cpp/spdlog/src/async.cpp",
+  "file": "/home/yunjian/cpp/spdlog/src/async.cpp",
+  "output": "CMakeFiles/spdlog.dir/src/async.cpp.o"
+},
+{
+  "directory": "/home/yunjian/cpp/build",
+  "command": "/usr/bin/clang++ -DSPDLOG_COMPILED_LIB -I/home/yunjian/cpp/spdlog/include -g -std=c++11 -o CMakeFiles/spdlog.dir/src/cfg.cpp.o -c /home/yunjian/cpp/spdlog/src/cfg.cpp",
+  "file": "/home/yunjian/cpp/spdlog/src/cfg.cpp",
+  "output": "CMakeFiles/spdlog.dir/src/cfg.cpp.o"
+},
+{
+  "directory": "/home/yunjian/cpp/build",
+  "command": "/usr/bin/clang++ -DSPDLOG_COMPILED_LIB -I/home/yunjian/cpp/spdlog/include -g -std=c++11 -o CMakeFiles/spdlog.dir/src/bundled_fmtlib_format.cpp.o -c /home/yunjian/cpp/spdlog/src/bundled_fmtlib_format.cpp",
+  "file": "/home/yunjian/cpp/spdlog/src/bundled_fmtlib_format.cpp",
+  "output": "CMakeFiles/spdlog.dir/src/bundled_fmtlib_format.cpp.o"
+},
+{
+  "directory": "/home/yunjian/cpp/build",
+  "command": "/usr/bin/clang++ -DSPDLOG_COMPILED_LIB -I/home/yunjian/cpp/spdlog/include -g -std=c++11 -o example/CMakeFiles/example.dir/example.cpp.o -c /home/yunjian/cpp/spdlog/example/example.cpp",
+  "file": "/home/yunjian/cpp/spdlog/example/example.cpp",
+  "output": "example/CMakeFiles/example.dir/example.cpp.o"
+}
+]

@@ -579,7 +579,48 @@ void test02(){
  
 ### 友元
 
-## lambda函数
+## 模板
+
+### 语法
+~~~cpp
+template <typename type> ret-type func-name(parameter list)
+{
+   // 函数的主体
+}
+~~~
+
+目的： 将类型也参数化
+
+
+~~~ cpp
+template<typename T>
+void myswap(T& a,T&b ){
+   T temp=a;
+   a=b;
+   b=t;
+}
+void test01(){
+   int a=0;
+   int b=1;
+   myswap(a,b);
+   //自动类型推到
+   cout << "a =" << a << " b= " << b << endl;
+   myswap<int>(a,b);
+    cout << "a =" << a << " b= " << b<< endl;
+}
+
+~~~
+
+### 注意事项
+1. 自动类型推导，必须推导出一致的数据类型 T 才能使用
+
+2. 模板必须要确定
+
+
+
+## vector容器
+
+### lambda函数
 
 语法
 ~~~ cpp
@@ -588,9 +629,194 @@ void test02(){
 }
 ~~~
 
+### queue容器队列
+1. deque:  front()、back()、push_back() 和 pop_back()等操作
+2. queue: push_back、pop_front。
 
 
+~~~cpp
+#include<queue>
+template<typename T,typename Container=std::deque<T>>
+class queue;
+~~~
+
+~~~cpp
+queue<int> q;
+q.empty();
+q.push(s);//插入队尾
+q.pop();//对头弹出
+q.front();//只返回对头元素
+q.back();//只返回队尾元素
+q.size();//返回队列中元素个数
+~~~
+
+### vector 可以动态扩展
+
+~~~ cpp
+#include <vector>
+vector<T> v; //默认构造函数
+vector<T> v2(v.begin(),v.end());//拷贝函数 直接传迭代器
+vector<T> v3(n,elem)//n个elem 
+vertor<T> v4(v); //拷贝
+~~~
+
+### 赋值
+
+1. 等号赋值
+2. assign 
+
+~~~cpp
+vector<int>v3;
+v3.assgin(v1.begin(),v1.end()); //和构造差不多
+v4.assgin(10,100);
+~~~
+### 容量大小操作
+
+empty();
+capacity();
+size();
+resize(int num);
+resize()
 
 
+## 继承
+### 语法
 
+> 为了减小重复的代码
+
+语法: class 子类 :继承方式 父类
+~~~cpp
+class A{
+    public:
+        int m_a;
+        int m_b;
+};
+class B:public A
+{
+    int m_c;
+};
+
+~~~
+
+### 继承方式
+
+继承方式
+1. 公共 
+2. 保护
+3. 私有
+如下规则：
+1. 父类中的保护权限儿子都拿不到
+2. 共有的父类的成员权限不变
+3. 保护-> 父有成员权限变为保护（私有同理）
+
+###  继承中的对象模型
+~~~ cpp
+class A{
+    public:
+        int m_a;
+        int m_b;
+    protected:
+        int m_d;
+    private:
+        int m_f;//父类属性能继承，但是编译器给隐藏了 -
+};
+class B:public A{
+int m_c;
+};
+//一个B类对象大小为 20
+~~~
+### 继承中构造和析构的顺序
+
+构造 先父再子
+析构 先子后父
+
+
+### 同名成员
+
+父类同名加作用域
+
+注意： 
+1. 如果是同名函数，编译器会隐藏同名函数（包括重载） 
+2. 同名成员 
+
+### 多继承语法
+
+class 子类： 继承方式 父类1,继承方式 父类2，继承方式 父类3
+{
+
+}
+
+
+同名加作用域！！！
+
+### 菱形继承
+
+##  多态
+
+### 用法
+分为两类：
+1. 静态多态： 函数重载 和运算符重载
+2. 动态多态： 派生类和虚函数实现运行是多态
+
+区别：
+1. 静态多态的函数地址早绑定 （编译阶段）
+2. 动态多态的函数地址晚邦定  (运行阶段)
+
+~~~  cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+class dong{
+    public:
+    //虚函数
+   virtual void speak(){
+        cout << "dong" << endl;
+    }
+};
+
+class Cat :public dong
+ {
+    public:
+    void speak(){
+        cout << "cat" << endl;
+    }
+};
+
+void dospeak(dong & animal){
+    animal.speak(); // 动态多态： 有继承，子类要重写父类中的虚函数
+    //父类的引用（指针）指向子类对象
+}
+void task01(){
+    Cat cat;
+    dospeak(cat);
+}
+int main(){
+    task01();
+}
+~~~
+
+### 多态原理
+
+1. 虚函数存储一个指针 `vfpter`指向一个`vftable`(表内记录虚函数入口地址)
+2. 如果子类重写了虚函数表 那指针指向入口就被重写的函数覆盖了(指向子类入口了)
+3. 当父类指针或者引用指向子类对象时候，发生多态
+~~~ cpp
+father & fathe = son;
+father.speak();
+~~~
+
+###  纯虚函数& 抽象类 
+
+抽象类：
+1. 只要有一个纯虚函数就叫抽象类
+2. 无法实例化对象
+3. 抽象类的子类 必须要重写父类中的纯虚函数，不然也是抽象类
+~~~cpp
+virtural void func()=0;//纯虚函数
+~~~
+
+###  虚析构和纯虚析构
+
+如果子类中有属性开辟到堆区  ，那么父类指针在释放时无法调用到子类的析构代码
 
