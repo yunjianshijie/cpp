@@ -30,7 +30,8 @@ int main()
     }
 
     // 发送数据到服务器
-    char message[50];
+    while(1)
+    {char message[50];
     std::cout << "发一句话吧\n";
     std::cin >> message;
     std::cout << " 即将发送  " << message << "size " << sizeof(message) << std::endl;
@@ -58,7 +59,7 @@ int main()
 
     std::cout << "Received " << bytesReceived << " bytes from the server" << std::endl;
     std::cout << "Message: " << buffer << std::endl;
-
+}
     close(sockfd);
     return 0;
 }

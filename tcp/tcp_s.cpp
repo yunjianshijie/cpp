@@ -46,7 +46,7 @@ int main() {
     }
 
     std::cout << "Accepted connection from " << inet_ntoa(clientAddr.sin_addr) << ":" << ntohs(clientAddr.sin_port) << std::endl;
-
+while(1){
     // 接收客户端发送的数据
     char buffer[1024];
     ssize_t bytesReceived = recv(clientSockfd, buffer, sizeof(buffer), 0);
@@ -55,6 +55,9 @@ int main() {
         close(clientSockfd);
         close(sockfd);
         return 1;
+    }
+    if(bytesReceived==0){
+        std::cerr<< "客户端退出"
     }
 
     std::cout << "Received " << bytesReceived << " bytes from the client" << std::endl;
@@ -72,7 +75,7 @@ int main() {
     }
 
     std::cout << "Sent " << bytesSent << " bytes to the client" << std::endl;
-
+}
     close(clientSockfd);
     close(sockfd);
     return 0;
